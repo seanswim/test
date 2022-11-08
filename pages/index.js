@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
-import Head from 'next/head'
+import Head from 'next/head';
 import Test from 'src/contents/Test.json';
 import { IpynbRenderer } from "react-ipynb-renderer";
 import dynamic from 'next/dynamic';
+import Footer from 'src/components/layouts/Footer';
+import Frame from 'src/components/layouts/Frame';
+
 
 export default function Home() {
   
@@ -11,13 +14,11 @@ export default function Home() {
   const [cells, setCells] = useState([]);
   const PlotGraph = dynamic(import('src/components/PlotGraph'),{ssr: false});
 
-  console.log(ipynbCells)
-
   const categorizeTypes = () => {
     let arr = [];
     ipynbCells.forEach((el, i) => {
       if (el.outputs && el.outputs[0] && el.outputs[0].data && el.outputs[0].data["application/vnd.plotly.v1+json"]) {
-        // arr.push({type: 'cell', data: eliminateOutputs(el)});
+        arr.push({type: 'cell', data: eliminateOutputs(el)});
         arr.push({type: 'plotly', data: el});
       } else {
         arr.push({type: 'cell', data: el});
@@ -27,8 +28,9 @@ export default function Home() {
   };
 
   const eliminateOutputs = (obj) => {
-    obj.outputs = [];
-    return obj;
+    const deepCopiedObj = JSON.parse(JSON.stringify(obj));
+    deepCopiedObj.outputs = [];
+    return deepCopiedObj;
   }
 
   useEffect(() => {
@@ -44,38 +46,36 @@ export default function Home() {
       </Head>
 
       <main>
-        {cells.map((el, i) => {
-          if(el.type === 'cell') {
-            return (
-              <IpynbRenderer
-              key={i}
-              ipynb={{cells: [el.data]}}
-              syntaxTheme="xonokai"
-              language="python"
-              bgTransparent={true}
-              />
-            )
-          } else if (el.type === 'plotly') {
-            console.log('plotly', el)
-            return (
-              <>
-              ejfialwfj
-                <PlotGraph
-                  data={el.data.outputs[0].data["application/vnd.plotly.v1+json"].data}
-                  layout={el.data.outputs[0].data["application/vnd.plotly.v1+json"].layout}
-                  // frames={this.state.frames}
-                  // config={this.state.config}
-                  // onInitialized={(figure) => this.setState(figure)}
-                  // onUpdate={(figure) => this.setState(figure)}
+        <Frame>
+          {cells.map((el, i) => {
+            if(el.type === 'cell') {
+              return (
+                <IpynbRenderer
+                key={i}
+                ipynb={{cells: [el.data]}}
+                syntaxTheme="xonokai"
+                language="python"
+                bgTransparent={true}
                 />
-              </>
-            )
-          }
-        })}
+              )
+            } else if (el.type === 'plotly') {
+              return (el.data.outputs.map((output, i) => {
+                return (
+                  <PlotGraph
+                    data={output.data["application/vnd.plotly.v1+json"].data}
+                    layout={output.data["application/vnd.plotly.v1+json"].layout}
+                  />
+                )
+              }))
+            }
+          })}
+        </Frame>
       </main>
 
       <footer>
-       footer
+        <Footer>
+          Footer
+        </Footer>
       </footer>
     </div>
   )
