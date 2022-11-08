@@ -6,7 +6,6 @@ import dynamic from 'next/dynamic';
 import Footer from 'src/components/layouts/Footer';
 import Frame from 'src/components/layouts/Frame';
 
-
 export default function Home() {
   
   const ipynb = Test;
@@ -61,10 +60,12 @@ export default function Home() {
             } else if (el.type === 'plotly') {
               return (el.data.outputs.map((output, i) => {
                 return (
-                  <PlotGraph
-                    data={output.data["application/vnd.plotly.v1+json"].data}
-                    layout={output.data["application/vnd.plotly.v1+json"].layout}
-                  />
+                  <div key={i}>
+                    <PlotGraph
+                      data={output.data["application/vnd.plotly.v1+json"].data}
+                      layout={output.data["application/vnd.plotly.v1+json"].layout}
+                    />
+                  </div>
                 )
               }))
             }

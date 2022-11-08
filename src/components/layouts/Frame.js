@@ -12,7 +12,7 @@ export const Frame = ({ children }) => {
         <SideMenu>
           SideMenu
         </SideMenu>
-        <Stack>
+        <Stack width='85vw'>
           {children}
         </Stack>
       </Stack>
