@@ -7,9 +7,11 @@ import Footer from 'src/components/layouts/Footer';
 import Frame from 'src/components/layouts/Frame';
 import fs from 'fs';
 import path from 'path';
+import { useRouter } from 'next/router';
 
-export default function Article({fileStructure}) {
+export default function Post({fileStructure}) {
 
+  const router = useRouter();
 
   const ipynb = Test;
   let ipynbCells = Test.cells;
@@ -73,7 +75,6 @@ export default function Article({fileStructure}) {
               }))
             }
           })}
-
           <div>
             Article
           </div>
@@ -88,7 +89,6 @@ export default function Article({fileStructure}) {
     </div>
   )
 }
-
 
 export const getStaticProps = async () => {
 
@@ -107,13 +107,15 @@ export const getStaticProps = async () => {
         nodeTree.push({
           name: childNode,
           type: 'folder',
+          link: address,
           dir: [],
         })
         nodeTree[nodeTree.length-1].dir = makeFileStructure(address);
       } else {
         nodeTree.push({
           name: childNode,
-          type: 'file'
+          type: 'file',
+          link: address,
         })
       }
     })
@@ -129,3 +131,37 @@ export const getStaticProps = async () => {
     },
   };
 };
+
+export const getStaticPaths = async () => {
+
+  const root = 'src/contents';
+  let arr = [];
+  
+  const makeFileStructure = (treePath, parentSlug) => {    
+
+    const node = fs.readdirSync(treePath);
+
+    if (node.length === 0) return;
+    
+    node.forEach((childNode, i) => {
+      const address = path.join(treePath, childNode);
+      const isDirectory = fs.lstatSync(address).isDirectory();
+      if (isDirectory) {
+        let slug = [...parentSlug];
+        slug.push(childNode)
+        makeFileStructure(address, slug);
+      } else {
+        arr.push({params: {'slug': [...parentSlug, childNode]}});
+      }
+    })
+  };
+
+  const fileStructure = makeFileStructure(root, []);
+
+  console.log(arr[2])
+ 
+	return {
+		paths: arr,
+		fallback: false,
+	};
+}

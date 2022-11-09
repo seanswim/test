@@ -48,13 +48,15 @@ export const getStaticProps = async () => {
         nodeTree.push({
           name: childNode,
           type: 'folder',
+          link: address,
           dir: [],
         })
         nodeTree[nodeTree.length-1].dir = makeFileStructure(address);
       } else {
         nodeTree.push({
           name: childNode,
-          type: 'file'
+          type: 'file',
+          link: address,
         })
       }
     })

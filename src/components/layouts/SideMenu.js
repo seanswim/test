@@ -1,3 +1,4 @@
+import Link from 'next/link';
 
 export const SideMenu = ({ children, fileStructure }) => {
 
@@ -6,10 +7,12 @@ export const SideMenu = ({ children, fileStructure }) => {
 
     if (node.type === 'file') {
       const fileName = node.name.split('.')[0];
+      const link = node.link.split('/').slice(2).join('/');
+
       return (
-        <div>
+        <Link href={`/post/${link}`}>
           {fileName}
-        </div>
+        </Link>
       )
     } else if (node.type === 'folder') {
       return (
