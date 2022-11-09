@@ -9,12 +9,12 @@ import fs from 'fs';
 import path from 'path';
 import { useRouter } from 'next/router';
 
-export default function Post({fileStructure}) {
+export default function Post({fileStructure, file}) {
 
   const router = useRouter();
 
-  const ipynb = Test;
-  let ipynbCells = Test.cells;
+  const ipynb = file;
+  let ipynbCells = file.cells;
   const [cells, setCells] = useState([]);
   const PlotGraph = dynamic(import('src/components/PlotGraph'),{ssr: false});
 
@@ -90,9 +90,8 @@ export default function Post({fileStructure}) {
   )
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps = async ({ params }) => {
   const root = 'src/contents';
-
   const makeFileStructure = (treePath) => {    
 
     const node = fs.readdirSync(treePath);
@@ -124,9 +123,15 @@ export const getStaticProps = async () => {
 
   const fileStructure = makeFileStructure(root, []);
 
+
+  const jsonFile = params.slug.join('/');
+
+  const file = fs.readFileSync(`src/contents/${jsonFile}`);
+
   return {
     props: {
-      fileStructure: fileStructure
+      fileStructure: fileStructure,
+      file: JSON.parse(file),
     },
   };
 };
