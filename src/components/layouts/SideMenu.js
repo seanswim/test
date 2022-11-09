@@ -1,15 +1,14 @@
 
 export const SideMenu = ({ children, fileStructure }) => {
 
-  console.log(fileStructure)
-
   const renderFileStructure = (node) => {
     if (node.length === 0) return;
 
     if (node.type === 'file') {
+      const fileName = node.name.split('.')[0];
       return (
         <div>
-          {node.name}
+          {fileName}
         </div>
       )
     } else if (node.type === 'folder') {

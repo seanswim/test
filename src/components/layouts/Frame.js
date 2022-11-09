@@ -10,7 +10,7 @@ export const Frame = ({ children, fileStructure }) => {
       <Header>
         Header
       </Header>
-      <Stack direction='row'>
+      <Stack maxWidth='60vw' direction='row'>
         <SideMenu fileStructure={fileStructure}>
           SideMenu
         </SideMenu>
