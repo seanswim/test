@@ -91,7 +91,6 @@ export default function Post({fileStructure}) {
 }
 
 export const getStaticProps = async () => {
-
   const root = 'src/contents';
 
   const makeFileStructure = (treePath) => {    
@@ -156,9 +155,7 @@ export const getStaticPaths = async () => {
     })
   };
 
-  const fileStructure = makeFileStructure(root, []);
-
-  console.log(arr[2])
+  makeFileStructure(root, []);
  
 	return {
 		paths: arr,
