@@ -5,8 +5,10 @@ import { IpynbRenderer } from "react-ipynb-renderer";
 import dynamic from 'next/dynamic';
 import Footer from 'src/components/layouts/Footer';
 import Frame from 'src/components/layouts/Frame';
+import fs from 'fs';
+import path from 'path';
 
-export default function Home() {
+export default function Home({fileStructure}) {
   
   const ipynb = Test;
   let ipynbCells = Test.cells;
@@ -45,7 +47,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <Frame>
+        <Frame fileStructure={fileStructure}>
           {cells.map((el, i) => {
             if(el.type === 'cell') {
               return (
@@ -81,3 +83,43 @@ export default function Home() {
     </div>
   )
 }
+
+export const getStaticProps = async () => {
+
+  const root = 'src/contents';
+
+  const makeFileStructure = (treePath) => {    
+
+    const node = fs.readdirSync(treePath);
+    if (node.length === 0) return [];
+    let nodeTree = [];
+
+    node.forEach((childNode, i) => {
+      const address = path.join(treePath, childNode);
+      const isDirectory = fs.lstatSync(address).isDirectory();
+      if (isDirectory) {
+        nodeTree.push({
+          name: childNode,
+          type: 'folder',
+          dir: [],
+        })
+        nodeTree[nodeTree.length-1].dir = makeFileStructure(address);
+      } else {
+        nodeTree.push({
+          name: childNode,
+          type: 'file'
+        })
+      }
+    })
+
+    return nodeTree;
+  };
+
+  const fileStructure = makeFileStructure(root, []);
+
+  return {
+    props: {
+      fileStructure: fileStructure
+    },
+  };
+};
