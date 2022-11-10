@@ -31,7 +31,7 @@ jobs:
     - run: npm run export
     
     - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@3.5.9
         with:
           GITHUB_TOKEN: ${{ secretes.GITHUB_TOKEN }}
           BRANCH: "main"
