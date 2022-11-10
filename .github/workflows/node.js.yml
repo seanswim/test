@@ -35,7 +35,7 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secretes.GITHUB_TOKEN }}
           BRANCH: "main"
-          FOLDER: build # The folder the action should deploy.
+          FOLDER: out # The folder the action should deploy.
           
           
           
