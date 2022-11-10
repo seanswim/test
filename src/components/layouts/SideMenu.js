@@ -4,8 +4,6 @@ export const SideMenu = ({ children, fileStructure }) => {
 
   const prefix = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
-  console.log(prefix)
-
   const renderFileStructure = (node) => {
     if (node.length === 0) return;
 
@@ -14,7 +12,7 @@ export const SideMenu = ({ children, fileStructure }) => {
       const link = node.link.split('/').slice(2).join('/');
 
       return (
-        <Link href={`${prefix}/post/${link}`}>
+        <Link href={`/post/${link}`}>
           {fileName}
         </Link>
       )
@@ -24,7 +22,7 @@ export const SideMenu = ({ children, fileStructure }) => {
           {node.name}
           <div style={{marginLeft: '20px'}}>
             {node.dir.map((childnode, i) => (
-              renderFileStructure(childnode)
+              <div key={i}>{renderFileStructure(childnode)}</div>
             ))}
           </div>
         </div>
