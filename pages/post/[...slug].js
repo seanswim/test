@@ -18,9 +18,9 @@ export default function Post({fileStructure, file}) {
   const [cells, setCells] = useState([]);
   const PlotGraph = dynamic(import('src/components/PlotGraph'),{ssr: false});
 
-  const categorizeTypes = () => {
+  const categorizeTypes = async () => {
     let arr = [];
-    ipynbCells.forEach((el, i) => {
+    await ipynbCells.forEach((el, i) => {
       if (el.outputs && el.outputs[0] && el.outputs[0].data && el.outputs[0].data["application/vnd.plotly.v1+json"]) {
         arr.push({type: 'cell', data: eliminateOutputs(el)});
         arr.push({type: 'plotly', data: el});
@@ -39,7 +39,7 @@ export default function Post({fileStructure, file}) {
 
   useEffect(() => {
     categorizeTypes();
-  },[])
+  },[router])
 
   return (
     <div>
@@ -67,17 +67,14 @@ export default function Post({fileStructure, file}) {
                 return (
                   <div key={i}>
                     <PlotGraph
-                      data={output.data["application/vnd.plotly.v1+json"].data}
-                      layout={output.data["application/vnd.plotly.v1+json"].layout}
+                      data={output.data["application/vnd.plotly.v1+json"]?.data}
+                      layout={output.data["application/vnd.plotly.v1+json"]?.layout}
                     />
                   </div>
                 )
               }))
             }
           })}
-          <div>
-            Article
-          </div>
         </Frame>
       </main>
 
