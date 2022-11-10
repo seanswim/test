@@ -4,6 +4,8 @@ export const SideMenu = ({ children, fileStructure }) => {
 
   const prefix = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
+  console.log(prefix)
+
   const renderFileStructure = (node) => {
     if (node.length === 0) return;
 
