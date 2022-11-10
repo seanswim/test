@@ -34,7 +34,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@3.5.9
         with:
           GITHUB_TOKEN: ${{ secretes.GITHUB_TOKEN }}
-          BRANCH: "main"
+          BRANCH: gh-pages
           FOLDER: out # The folder the action should deploy.
           
           
