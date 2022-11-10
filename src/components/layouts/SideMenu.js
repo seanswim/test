@@ -1,18 +1,20 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export const SideMenu = ({ children, fileStructure }) => {
 
+  const router = useRouter();
   const prefix = process.env.NEXT_PUBLIC_BASE_PATH || '';
-
+  
   const renderFileStructure = (node) => {
     if (node.length === 0) return;
-
+    
     if (node.type === 'file') {
       const fileName = node.name.split('.')[0];
       const link = node.link.split('/').slice(2).join('/');
 
       return (
-        <Link href={`/post/${link}`}>
+        <Link href={`/post/${link}`} style={{fontWeight: router.asPath === `/post/${link}` ? 'bold' : ''}}>
           {fileName}
         </Link>
       )
