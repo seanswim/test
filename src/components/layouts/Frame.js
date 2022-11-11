@@ -7,11 +7,9 @@ export const Frame = ({ children, fileStructure }) => {
   return (
     <Stack>
       <Header />
-      <Stack maxWidth='60vw' direction='row'>
-        <SideMenu fileStructure={fileStructure}>
-          Table of contents
-        </SideMenu>
-        <Stack width='85vw'>
+      <Stack direction='row' justifyContent='center' spacing={15}>
+        <SideMenu fileStructure={fileStructure} />
+        <Stack width='800px'>
           {children}
         </Stack>
       </Stack>

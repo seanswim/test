@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
-import Test from 'src/contents/Test.json';
 import { IpynbRenderer } from "react-ipynb-renderer";
 import dynamic from 'next/dynamic';
 import Footer from 'src/components/layouts/Footer';
@@ -104,6 +103,7 @@ export const getStaticProps = async ({ params }) => {
           type: 'folder',
           link: address,
           dir: [],
+          open: true,
         })
         nodeTree[nodeTree.length-1].dir = makeFileStructure(address);
       } else {

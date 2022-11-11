@@ -19,8 +19,7 @@ export default function Home({fileStructure}) {
       <main>
         <Frame fileStructure={fileStructure}>
           <div>
-            Landing page
-            <Image src={boi} />
+            <Image src={boi} alt={'logo'}/>
           </div>
         </Frame>
       </main>
@@ -53,6 +52,7 @@ export const getStaticProps = async () => {
           type: 'folder',
           link: address,
           dir: [],
+          open: true,
         })
         nodeTree[nodeTree.length-1].dir = makeFileStructure(address);
       } else {

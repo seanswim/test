@@ -16,11 +16,13 @@ export const Header = ({ children }) => {
         alignItems: 'center',
         position: 'sticky',
         top: '0px',
+        zIndex: '999',
       }}
     >
       <Image 
         src={Logo} 
         width={120}
+        alt='logo'
         onClick={() => window.location.href = 'https://www.fairlabs.io'}
         style={{cursor: 'pointer'}}
       />
