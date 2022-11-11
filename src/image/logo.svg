@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="25.119" viewBox="0 0 128 25.119">
+  <g id="fairlabs_logo" transform="translate(0 0)">
+    <g id="그룹_10613" data-name="그룹 10613" transform="translate(-369 -2808.537)">
+      <g id="사각형_2" data-name="사각형 2" transform="translate(369 2811.657)" fill="#1f2f41" stroke="#1f2f41" stroke-width="1">
+        <rect width="6" height="6" rx="1" stroke="none"/>
+        <rect x="0.5" y="0.5" width="5" height="5" rx="0.5" fill="none"/>
+      </g>
+      <g id="그룹_10609" data-name="그룹 10609" transform="matrix(0.94, 0.342, -0.342, 0.94, 378.908, 2810.249)">
+        <path id="패스_2" data-name="패스 2" d="M5.244,5.493h0l-4.5,0a.251.251,0,0,1-.25-.25l0-4.5A.249.249,0,0,1,.742.493l4.5,0a.251.251,0,0,1,.25.25l0,4.5a.249.249,0,0,1-.249.249Z" fill="#1f2f41"/>
+        <path id="패스_3" data-name="패스 3" d="M.993.993l0,4,4,0,0-4-4,0m-.251-1h0l4.5,0a.751.751,0,0,1,.75.75l0,4.5a.749.749,0,0,1-.749.749h0l-4.5,0A.751.751,0,0,1,0,5.241l0-4.5A.749.749,0,0,1,.742-.007Z" fill="#1f2f41"/>
+      </g>
+      <g id="그룹_10610" data-name="그룹 10610" transform="translate(389.042 2808.55) rotate(30)">
+        <path id="패스_4" data-name="패스 4" d="M5.242,5.491h0l-4.5,0a.251.251,0,0,1-.25-.25l0-4.5A.248.248,0,0,1,.739.491l4.5,0a.251.251,0,0,1,.25.25l0,4.5a.248.248,0,0,1-.249.249Z" fill="#1f2f41"/>
+        <path id="패스_5" data-name="패스 5" d="M.991.991l0,4,4,0,0-4-4,0m-.252-1h0l4.5,0a.751.751,0,0,1,.75.75l0,4.5a.748.748,0,0,1-.749.749h0l-4.5,0a.751.751,0,0,1-.75-.75l0-4.5A.748.748,0,0,1,.739-.009Z" fill="#1f2f41"/>
+      </g>
+      <g id="사각형_3" data-name="사각형 3" transform="translate(369 2819.657)" fill="#1f2f41" stroke="#1f2f41" stroke-width="1">
+        <rect width="6" height="6" rx="1" stroke="none"/>
+        <rect x="0.5" y="0.5" width="5" height="5" rx="0.5" fill="none"/>
+      </g>
+      <g id="사각형_4" data-name="사각형 4" transform="translate(377 2819.657)" fill="#1f2f41" stroke="#1f2f41" stroke-width="1">
+        <rect width="6" height="6" rx="1" stroke="none"/>
+        <rect x="0.5" y="0.5" width="5" height="5" rx="0.5" fill="none"/>
+      </g>
+      <g id="그룹_10611" data-name="그룹 10611" transform="translate(386.29 2818.622) rotate(10)">
+        <path id="패스_6" data-name="패스 6" d="M5.092,5.5H.726A.24.24,0,0,1,.5,5.245V.746A.259.259,0,0,1,.568.564.214.214,0,0,1,.724.5H5.09a.24.24,0,0,1,.228.25v4.5a.259.259,0,0,1-.072.182A.214.214,0,0,1,5.092,5.5Z" fill="#1f2f41"/>
+        <path id="패스_7" data-name="패스 7" d="M1,1V5H4.819V1H1M.724,0H5.09a.74.74,0,0,1,.728.75v4.5A.739.739,0,0,1,5.092,6H.725A.74.74,0,0,1,0,5.245V.746A.739.739,0,0,1,.724,0Z" fill="#1f2f41"/>
+      </g>
+      <g id="사각형_5" data-name="사각형 5" transform="translate(369 2827.657)" fill="#1f2f41" stroke="#1f2f41" stroke-width="1">
+        <rect width="6" height="6" rx="1" stroke="none"/>
+        <rect x="0.5" y="0.5" width="5" height="5" rx="0.5" fill="none"/>
+      </g>
+      <g id="그룹_10612" data-name="그룹 10612" transform="translate(377.223 2827.67)">
+        <g id="사각형_6" data-name="사각형 6" transform="translate(-0.223 -0.013)" fill="#1f2f41" stroke="#1f2f41" stroke-width="1">
+          <rect width="6" height="6" rx="1" stroke="none"/>
+          <rect x="0.5" y="0.5" width="5" height="5" rx="0.5" fill="none"/>
+        </g>
+      </g>
+      <g id="사각형_7" data-name="사각형 7" transform="translate(385 2827.657)" fill="#1f2f41" stroke="#1f2f41" stroke-width="1">
+        <rect width="6" height="6" rx="1" stroke="none"/>
+        <rect x="0.5" y="0.5" width="5" height="5" rx="0.5" fill="none"/>
+      </g>
+    </g>
+    <text id="FAIR_Labs" data-name="FAIR Labs" transform="translate(33 21)" fill="#1f2f41" font-size="20" font-family="TimesNewRomanPS-BoldMT, Times New Roman" font-weight="700"><tspan x="0" y="0">FAIR Labs</tspan></text>
+  </g>
+</svg>

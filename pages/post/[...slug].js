@@ -55,11 +55,11 @@ export default function Post({fileStructure, file}) {
             if(el.type === 'cell') {
               return (
                 <IpynbRenderer
-                key={i}
-                ipynb={{cells: [el.data]}}
-                syntaxTheme="xonokai"
-                language="python"
-                bgTransparent={true}
+                  key={i}
+                  ipynb={{cells: [el.data]}}
+                  syntaxTheme="ghcolors"
+                  language="python"
+                  bgTransparent={true}
                 />
               )
             } else if (el.type === 'plotly') {

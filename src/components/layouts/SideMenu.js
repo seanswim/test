@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 export const SideMenu = ({ children, fileStructure }) => {
 
   const router = useRouter();
-  const prefix = process.env.NEXT_PUBLIC_BASE_PATH || '';
   
   const renderFileStructure = (node) => {
     if (node.length === 0) return;
