@@ -1,17 +1,41 @@
 import Logo from 'src/image/logo.svg';
 import Image from 'next/image';
+import { Stack, Typography } from '@mui/material';
+import Link from 'next/link';
 
 export const Header = ({ children }) => {
   return (
-    <div style={{width: '100%', border: '3px solid red'}}>
+    <Stack 
+      spacing={2} 
+      direction='row' 
+      sx={{
+        with: '100%',
+        borderBottom: '1px solid rgb(214, 222, 230)', 
+        backgroundColor: 'white',
+        padding: '10px 20px', 
+        alignItems: 'center',
+        position: 'sticky',
+        top: '0px',
+      }}
+    >
       <Image 
         src={Logo} 
-        width={150}
+        width={120}
         onClick={() => window.location.href = 'https://www.fairlabs.io'}
         style={{cursor: 'pointer'}}
       />
+      <Link
+        href='/'
+      >
+        <Typography 
+          variant='h6'
+          sx={{cursor: 'pointer'}}
+        >
+          Blog
+        </Typography>
+      </Link>
       {children}
-    </div>
+    </Stack>
   )
 }
 

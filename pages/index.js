@@ -3,6 +3,8 @@ import Footer from 'src/components/layouts/Footer';
 import Frame from 'src/components/layouts/Frame';
 import fs from 'fs';
 import path from 'path';
+import Image from 'next/image';
+import boi from 'src/image/boi.gif';
 
 export default function Home({fileStructure}) {
 
@@ -18,6 +20,7 @@ export default function Home({fileStructure}) {
         <Frame fileStructure={fileStructure}>
           <div>
             Landing page
+            <Image src={boi} />
           </div>
         </Frame>
       </main>
