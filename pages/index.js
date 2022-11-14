@@ -10,6 +10,8 @@ import { useState, useEffect } from 'react';
 export default function Home({fileStructure}) {
 
   const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(0);
+  const contentsNperPage = 20;
 
   const extractPosts = () => {
     let memo = [];
@@ -25,6 +27,11 @@ export default function Home({fileStructure}) {
     recursive(fileStructure);
     setPosts(memo);
   }
+
+  const handleChange = (e, value) => {
+    setPage(value -1)
+  }
+
 
   useEffect(() => {
     extractPosts();
@@ -46,7 +53,7 @@ export default function Home({fileStructure}) {
           <Stack spacing={2}>
             <Typography sx={{fontSize: '32px', fontWeight: '600'}}>All</Typography>
             <Grid container spacing={2}>
-              {posts.map((post, i) => {
+              {posts.slice(contentsNperPage*page, contentsNperPage*(page+1)).map((post, i) => {
                 let arr = post.link.split('contents/')[1].split('/');
                 let categoryArr = arr.slice(0, -1)
                 let linkArr = ['post', ...arr]
@@ -63,51 +70,9 @@ export default function Home({fileStructure}) {
                   />
                 </Grid>
               )})}
-              <Grid item md={4}>
-                <Card 
-                  title={'How to make a blog'}
-                  category={'fairlabs/frontend/sean'}
-                />
-              </Grid>
-              <Grid item md={4}>
-                <Card 
-                  title={'How to make a blog'}
-                  category={'fairlabs/frontend/sean'}
-                />
-              </Grid>
-              <Grid item md={4}>
-                <Card 
-                  title={'How to make a blog'}
-                  category={'fairlabs/frontend/sean'}
-                />
-              </Grid>
-              <Grid item md={4}>
-                <Card 
-                  title={'How to make a blog'}
-                  category={'fairlabs/frontend/sean'}
-                />
-              </Grid>
-              <Grid item md={4}>
-                <Card 
-                  title={'How to make a blog'}
-                  category={'fairlabs/frontend/sean'}
-                />
-              </Grid>
-              <Grid item md={4}>
-                <Card 
-                  title={'How to make a blog'}
-                  category={'fairlabs/frontend/sean'}
-                />
-              </Grid>
-              <Grid item md={4}>
-                <Card 
-                  title={'How to make a blog'}
-                  category={'fairlabs/frontend/sean'}
-                />
-              </Grid>
             </Grid>
             <Stack direction='row' sx={{py: 10, justifyContent: 'center'}}>
-              <Pagination count={10} color="primary" />
+              <Pagination count={Math.ceil(posts.length/contentsNperPage)} color="primary" onChange={handleChange}/>
             </Stack>
           </Stack>
         </Frame>
