@@ -14,6 +14,7 @@ const CustomCard = ({thumbnail, title, category, link}) => {
           boxShadow: '2px 3px 3px grey',
         },
       }}
+      onClick={() => window.location.href=link}
     >
       <Stack>
         <Image 
