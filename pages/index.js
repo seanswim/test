@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import Banner from 'src/components/Banner';
 import Card from 'src/components/Card';
-import { Stack, Grid, Typography } from '@mui/material';
+import { Stack, Grid, Typography, Pagination } from '@mui/material';
 import { useState, useEffect } from 'react';
 
 export default function Home({fileStructure}) {
@@ -106,6 +106,9 @@ export default function Home({fileStructure}) {
                 />
               </Grid>
             </Grid>
+            <Stack direction='row' sx={{py: 10, justifyContent: 'center'}}>
+              <Pagination count={10} color="primary" />
+            </Stack>
           </Stack>
         </Frame>
       </main>
