@@ -76,12 +76,6 @@ export default function Post({fileStructure, file}) {
           })}
         </Frame>
       </main>
-
-      <footer>
-        <Footer>
-          Footer
-        </Footer>
-      </footer>
     </div>
   )
 }

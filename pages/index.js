@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import Footer from 'src/components/layouts/Footer';
 import Frame from 'src/components/layouts/Frame';
 import fs from 'fs';
 import path from 'path';
-import Image from 'next/image';
-import boi from 'src/image/boi.gif';
+import Banner from 'src/components/Banner';
+import Card from 'src/components/Card';
+import { Stack, Grid, Typography } from '@mui/material';
 
 export default function Home({fileStructure}) {
 
@@ -17,18 +17,59 @@ export default function Home({fileStructure}) {
       </Head>
 
       <main>
-        <Frame fileStructure={fileStructure}>
-          <div>
-            <Image src={boi} alt={'logo'}/>
-          </div>
+        <Frame 
+          banner={<Banner />}
+          fileStructure={fileStructure}
+        >
+          <Stack spacing={2}>
+            <Typography sx={{fontSize: '32px', fontWeight: '600'}}>All</Typography>
+            <Grid container spacing={2}>
+              <Grid item md={4}>
+                <Card 
+                  title={'How to make a blog'}
+                  category={'fairlabs/frontend/sean'}
+                />
+              </Grid>
+              <Grid item md={4}>
+                <Card 
+                  title={'How to make a blog'}
+                  category={'fairlabs/frontend/sean'}
+                />
+              </Grid>
+              <Grid item md={4}>
+                <Card 
+                  title={'How to make a blog'}
+                  category={'fairlabs/frontend/sean'}
+                />
+              </Grid>
+              <Grid item md={4}>
+                <Card 
+                  title={'How to make a blog'}
+                  category={'fairlabs/frontend/sean'}
+                />
+              </Grid>
+              <Grid item md={4}>
+                <Card 
+                  title={'How to make a blog'}
+                  category={'fairlabs/frontend/sean'}
+                />
+              </Grid>
+              <Grid item md={4}>
+                <Card 
+                  title={'How to make a blog'}
+                  category={'fairlabs/frontend/sean'}
+                />
+              </Grid>
+              <Grid item md={4}>
+                <Card 
+                  title={'How to make a blog'}
+                  category={'fairlabs/frontend/sean'}
+                />
+              </Grid>
+            </Grid>
+          </Stack>
         </Frame>
       </main>
-
-      <footer>
-        <Footer>
-          Footer
-        </Footer>
-      </footer>
     </div>
   )
 }
