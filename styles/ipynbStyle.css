@@ -1480,28 +1480,27 @@
   border: none;
   border-collapse: collapse;
   border-spacing: 0;
-  color: #CCCCCC;
+  color: #000;
   table-layout: fixed;
 }
 .ipynb-renderer-root .rendered_html thead {
   font-family: sans-serif !important;
   font-size: 9.4pt !important;
-  background: #1e1e1e;
-  color: #CCCCCC;
-  border-bottom: 1px solid #1e1e1e;
+  background: #000000;
+  color: #fff;
   vertical-align: bottom;
 }
 .ipynb-renderer-root .rendered_html tbody tr:nth-child(odd) {
   background: #fff;
 }
 .ipynb-renderer-root .rendered_html tbody tr {
-  background: #202020;
+  background: #cacaca;
 }
 .ipynb-renderer-root .rendered_html tbody tr:hover:nth-child(odd) {
-  background: #252525;
+  background: #a7a7a7;
 }
 .ipynb-renderer-root .rendered_html tbody tr:hover {
-  background: #1e1e1e;
+  background: #a7a7a7;
 }
 .ipynb-renderer-root .rendered_html * + table {
   margin-top: 0.05em;
@@ -2507,9 +2506,9 @@
 .ipynb-renderer-root div.output_html {
   font-family: monospace, monospace;
   font-size: 8.5pt;
-  color: #CCCCCC;
-  background-color: #1E1E1E;
-  background: #1E1E1E;
+  color: #000;
+  /* background-color: #1E1E1E;
+  background: #1E1E1E; */
 }
 .ipynb-renderer-root div.output_subarea {
   overflow-x: auto;
@@ -2765,9 +2764,9 @@
   font-family: monospace, monospace;
   font-size: 11 !important;
   line-height: 170% !important;
-  color: #F8F8F0;
-  background: #1E1E1E;
-  background-color: #1E1E1E;
+  color: #000;
+  background: #fff;
+  background-color: #fff;
   max-width: 80%;
   border-radius: 0px;
   border-left: none;
@@ -3179,4 +3178,8 @@
 }
 .ipynb-renderer-root div.output_latex {
   color: #888888;
+}
+
+.ipynb-renderer-root img {
+  width: 800px;
 }

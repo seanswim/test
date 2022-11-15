@@ -20,6 +20,14 @@ export default function Post({fileStructure, file}) {
   const categorizeTypes = async () => {
     let arr = [];
     await ipynbCells.forEach((el, i) => {
+      if (el.outputs?.length > 0) {
+        el.outputs.forEach((e, i) => {
+          if (e.data && e.data === "application/vnd.plotly.v1+json") {
+            console.log('?')
+            arr.push({type: 'plotly', data: el});
+          }
+        })
+      }
       if (el.outputs && el.outputs[0] && el.outputs[0].data && el.outputs[0].data["application/vnd.plotly.v1+json"]) {
         arr.push({type: 'cell', data: eliminateOutputs(el)});
         arr.push({type: 'plotly', data: el});
@@ -38,6 +46,7 @@ export default function Post({fileStructure, file}) {
 
   useEffect(() => {
     categorizeTypes();
+    // console.log(cells)
   },[router])
 
   return (
@@ -74,14 +83,16 @@ export default function Post({fileStructure, file}) {
                   </Stack>
                 )
               } else if (el.type === 'plotly') {
+                // console.log(el.data.outputs)
                 return (el.data.outputs.map((output, i) => {
+                  // console.log(output)
                   return (
-                    <div key={i}>
+                    <Stack key={i} sx={{mb: '20px'}}>
                       <PlotGraph
                         data={output.data["application/vnd.plotly.v1+json"]?.data}
-                        layout={output.data["application/vnd.plotly.v1+json"]?.layout}
+                        layout={{ width: 800, height: 550, ...output.data["application/vnd.plotly.v1+json"]?.layout}}
                       />
-                    </div>
+                    </Stack>
                   )
                 }))
               }
