@@ -20,7 +20,7 @@ const CustomCard = ({thumbnail, title, category, link}) => {
           <Image 
             src={thumbnail} 
             alt={'card'} 
-            width={250}
+            width={290}
           />
         </Stack>
         <Typography

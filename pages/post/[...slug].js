@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { IpynbRenderer } from "react-ipynb-renderer";
 import dynamic from 'next/dynamic';
-import Footer from 'src/components/layouts/Footer';
 import Frame from 'src/components/layouts/Frame';
 import fs from 'fs';
 import path from 'path';
 import { useRouter } from 'next/router';
+import { Stack } from '@mui/material';
 
 export default function Post({fileStructure, file}) {
 
@@ -50,30 +50,43 @@ export default function Post({fileStructure, file}) {
 
       <main>
         <Frame fileStructure={fileStructure}>
-          {cells.map((el, i) => {
-            if(el.type === 'cell') {
-              return (
-                <IpynbRenderer
-                  key={i}
-                  ipynb={{cells: [el.data]}}
-                  syntaxTheme="ghcolors"
-                  language="python"
-                  bgTransparent={true}
-                />
-              )
-            } else if (el.type === 'plotly') {
-              return (el.data.outputs.map((output, i) => {
+          <Stack mt={6}>
+            {cells.map((el, i) => {
+              if(el.type === 'cell') {
                 return (
-                  <div key={i}>
-                    <PlotGraph
-                      data={output.data["application/vnd.plotly.v1+json"]?.data}
-                      layout={output.data["application/vnd.plotly.v1+json"]?.layout}
+                  <Stack key={i} sx={{maxWidth: '900px'}}>
+                    <IpynbRenderer
+                      ipynb={{cells: [el.data]}}
+                      syntaxTheme="ghcolors"
+                      language="python"
+                      bgTransparent={true}
+                      formulaOptions={{
+                        mathjax3: {
+                          tex: {
+                            tags: "ams"
+                          }
+                        }
+                      }}
+                      mdiOptions={{
+                        html: true
+                      }}
                     />
-                  </div>
+                  </Stack>
                 )
-              }))
-            }
-          })}
+              } else if (el.type === 'plotly') {
+                return (el.data.outputs.map((output, i) => {
+                  return (
+                    <div key={i}>
+                      <PlotGraph
+                        data={output.data["application/vnd.plotly.v1+json"]?.data}
+                        layout={output.data["application/vnd.plotly.v1+json"]?.layout}
+                      />
+                    </div>
+                  )
+                }))
+              }
+            })}
+          </Stack>
         </Frame>
       </main>
     </div>
@@ -113,10 +126,7 @@ export const getStaticProps = async ({ params }) => {
   };
 
   const fileStructure = makeFileStructure(root, []);
-
-
   const jsonFile = params.slug.join('/');
-
   const file = fs.readFileSync(`src/contents/${jsonFile}`);
 
   return {
@@ -135,7 +145,6 @@ export const getStaticPaths = async () => {
   const makeFileStructure = (treePath, parentSlug) => {    
 
     const node = fs.readdirSync(treePath);
-
     if (node.length === 0) return;
     
     node.forEach((childNode, i) => {
