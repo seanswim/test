@@ -8,7 +8,6 @@ const CustomCard = ({thumbnail, title, category, link}) => {
   return (
     <Card
       sx={{
-        width: 300,
         cursor: 'pointer',
         '&:hover': {
           boxShadow: '2px 3px 3px grey',
@@ -17,11 +16,13 @@ const CustomCard = ({thumbnail, title, category, link}) => {
       onClick={() => window.location.href=link}
     >
       <Stack>
-        <Image 
-          src={thumbnail} 
-          alt={'card'} 
-          width={300}
-        />
+        <Stack>
+          <Image 
+            src={thumbnail} 
+            alt={'card'} 
+            width={250}
+          />
+        </Stack>
         <Typography
           sx={{
             fontWeight: 600,

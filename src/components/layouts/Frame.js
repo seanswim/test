@@ -8,7 +8,15 @@ export const Frame = ({ children, banner, fileStructure }) => {
     <Stack>
       <Header />
       {banner}
-      <Stack direction='row' justifyContent='center' spacing={15}>
+      <Stack 
+        direction='row' 
+        justifyContent='center'
+        spacing={8}
+        sx={{
+          minWidth: '1200px',
+          width: '100%',
+        }}
+      >
         <SideMenu fileStructure={fileStructure} />
         <Stack>
           {children}

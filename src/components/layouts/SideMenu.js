@@ -59,7 +59,11 @@ export const SideMenu = ({ children, fileStructure }) => {
               sx={{
                 '.MuiTypography-root': {
                   fontWeight: router.asPath === `/post/${encodeURI(link)}` ? 'bold' : '',
-                  color: router.asPath === `/post/${encodeURI(link)}` ? 'black' : ''
+                  fontSize: '12px',
+                  color: router.asPath === `/post/${encodeURI(link)}` ? 'black' : '',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
               }}}
             />
           </ListItemButton>
@@ -80,7 +84,15 @@ export const SideMenu = ({ children, fileStructure }) => {
             <ListItemIcon>
               <FolderIcon />
             </ListItemIcon>
-            <ListItemText primary={node.name} />
+            <ListItemText primary={node.name} 
+              sx={{
+                '.MuiTypography-root': {
+                  fontSize: '12px',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+              }}}
+            />
             {node.open ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
           <Stack sx={{ml: '20px'}}>
@@ -100,7 +112,7 @@ export const SideMenu = ({ children, fileStructure }) => {
   return (
     <Stack sx={{
       padding: '20px',
-      minWidth: '350px', 
+      minWidth: '280px', 
       }}
     >
       <Stack

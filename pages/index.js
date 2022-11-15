@@ -52,7 +52,7 @@ export default function Home({fileStructure}) {
         >
           <Stack spacing={2}>
             <Typography sx={{fontSize: '32px', fontWeight: '600'}}>All</Typography>
-            <Grid container spacing={2}>
+            <Grid container xs={12} spacing={2}>
               {posts.slice(contentsNperPage*page, contentsNperPage*(page+1)).map((post, i) => {
                 let arr = post.link.split('contents/')[1].split('/');
                 let categoryArr = arr.slice(0, -1)
@@ -62,7 +62,7 @@ export default function Home({fileStructure}) {
                 const link = linkArr.join('/');
 
                 return (
-                <Grid key={i} item md={4}>
+                <Grid key={i} item xs={4}>
                   <Card 
                     title={post.name.split('.')[0]}
                     category={category}

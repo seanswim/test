@@ -7,7 +7,6 @@ export const Header = ({ children }) => {
   return (
     <Stack 
       sx={{
-        with: '100%',
         borderBottom: '1px solid rgb(214, 222, 230)', 
         backgroundColor: 'white',
         padding: '10px 20px', 
