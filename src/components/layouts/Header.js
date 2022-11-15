@@ -6,37 +6,46 @@ import Link from 'next/link';
 export const Header = ({ children }) => {
   return (
     <Stack 
-      spacing={2} 
-      direction='row' 
       sx={{
         with: '100%',
         borderBottom: '1px solid rgb(214, 222, 230)', 
         backgroundColor: 'white',
         padding: '10px 20px', 
-        alignItems: 'center',
         position: 'sticky',
         top: '0px',
         zIndex: '999',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
-    >
-      <Image 
-        src={Logo} 
-        width={120}
-        alt='logo'
-        onClick={() => window.location.href = 'https://www.fairlabs.io'}
-        style={{cursor: 'pointer'}}
-      />
-      <Link
-        href='/'
       >
-        <Typography 
-          variant='h6'
-          sx={{cursor: 'pointer'}}
+      <Stack
+        spacing={2}
+        direction='row' 
+        sx={{
+          maxWidth: '1200px',
+          width: '100%',
+          alignItems: 'center',
+        }}
+      >
+        <Image 
+          src={Logo} 
+          width={120}
+          alt='logo'
+          onClick={() => window.location.href = 'https://www.fairlabs.io'}
+          style={{cursor: 'pointer'}}
+        />
+        <Link
+          href='/'
         >
-          Blog
-        </Typography>
-      </Link>
-      {children}
+          <Typography 
+            variant='h6'
+            sx={{cursor: 'pointer'}}
+          >
+            Blog
+          </Typography>
+        </Link>
+        {children}
+      </Stack>
     </Stack>
   )
 }
